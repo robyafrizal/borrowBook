@@ -1,0 +1,58 @@
+"use strict";
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    return queryInterface.bulkInsert("books", [
+      {
+        code: "JK-45",
+        title: "Harry Potter",
+        author: "J.K Rowling",
+        member_id: 1,
+        stock: 1,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        code: "SHR-1",
+        title: "A Study in Scarlet",
+        author: "Arthur Conan Doyle",
+        member_id: 2,
+        stock: 1,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        code: "TW-11",
+        title: "Twilight",
+        author: "Stephenie Meyer",
+        member_id: 1,
+        stock: 1,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        code: "HOB-83",
+        title: "The Hobbit, or There and Back Again",
+        author: "J.R.R. Tolkien",
+        member_id: 2,
+        stock: 1,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        code: "NRN-7",
+        title: "The Lion, the Witch and the Wardrobe",
+        author: "C.S. Lewis",
+        member_id: 3,
+        stock: 1,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+    ]);
+  },
+
+  async down(queryInterface, Sequelize) {
+    return queryInterface.bulkDelete("books", null, {});
+  },
+};
