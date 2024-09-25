@@ -1,0 +1,156 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Borrow Book",
+        "description": "Api documentation for Tecnical Test - Member Borrow Book",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/member/members": {
+            "get": {
+                "summary": "Get all members",
+                "operationId": "getAllMembers",
+                "tags": [
+                    "Members"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of members",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Member"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/book/books": {
+            "get": {
+                "summary": "Get all books",
+                "operationId": "getAllBooks",
+                "tags": [
+                    "Books"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of books",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Book"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Member": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "code": {
+                        "type": "string",
+                        "example": "M001"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Angga"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-09-24T18:28:24.871Z"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-09-24T18:28:24.871Z"
+                    }
+                }
+            },
+            "Book": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "code": {
+                        "type": "string",
+                        "example": "JK-45"
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Harry Potter"
+                    },
+                    "author": {
+                        "type": "string",
+                        "example": "J.K Rowling"
+                    },
+                    "member_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "stock": {
+                        "type": "",
+                        "example": 1
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-09-24T18:28:24.871Z"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-09-24T18:28:24.871Z"
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

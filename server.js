@@ -1,7 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-// const userRoute = require("./routes/userRoute");
+const memberRoute = require("./src/routes/memberRoute");
+const bookRoute = require("./src/routes/bookRoute");
 const not_found = require("./middlewares/notFound");
 const colors = require("colors");
 
@@ -23,7 +24,14 @@ app.listen(port, () => {
 });
 
 //-----------Routes-----------
-// app.use("/api/user", userRoute);
+app.use("/api/member", memberRoute);
+app.use("/api/book", bookRoute);
+
+// Swagger
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger/swagger.json");
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //-----------Middleware Not Found-----------
 app.use(not_found);
