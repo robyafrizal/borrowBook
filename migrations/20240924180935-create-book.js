@@ -18,9 +18,6 @@ module.exports = {
       author: {
         type: Sequelize.STRING,
       },
-      member_id: {
-        type: Sequelize.INTEGER,
-      },
       stock: {
         type: Sequelize.INTEGER,
       },

@@ -9,10 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Book.belongsTo(models.Member, {
-        foreignKey: "member_id",
-        as: "member",
-      });
     }
   }
   Book.init(
@@ -20,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       code: DataTypes.STRING,
       title: DataTypes.STRING,
       author: DataTypes.STRING,
-      member_id: DataTypes.INTEGER,
       stock: DataTypes.INTEGER,
     },
     {
