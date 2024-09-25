@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "tes": "node algoritma.js",
     "start": "node server.js",
     "server": "nodemon server.js"
   },
