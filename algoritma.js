@@ -1,11 +1,26 @@
 //1. Terdapat string "NEGIE1", silahkan reverse alphabet nya dengan angka tetap diakhir kata Hasil = "EIGEN1"
 
 let string = "NEGIE1";
-function reverse(string) {
-  let word = string.split("");
-  console.log(word.reverse());
+function reverseLetter(string) {
+  let letters = [];
+  for (let i = 0; i < string.length; i++) {
+    if (/[a-zA-Z]/.test(string[i])) {
+      letters.push(string[i]);
+    }
+  }
+  letters.reverse();
+
+  let result = [];
+  for (let i = 0; i < string.length; i++) {
+    if (/[a-zA-Z]/.test(string[i])) {
+      result.push(letters.shift());
+    } else {
+      result.push(string[i]);
+    }
+  }
+  return result.join("");
 }
-reverse(string);
+console.log(reverseLetter(string));
 
 //2. Silahkan cari kata terpanjang dari kalimat tersebut, jika ada kata dengan panjang yang sama silahkan ambil salah satu
 
