@@ -66,7 +66,14 @@ class BookService {
         };
       }
 
-      // Business logic to mark the book as borrowed
+      if (member.book >= 2) {
+        return {
+          books: null,
+          message: "Member can not borrow more than 2 books",
+          statusCode: 400,
+        };
+      }
+
       book.stock--;
       member.book++;
       await this.BookRepository.save(book);
