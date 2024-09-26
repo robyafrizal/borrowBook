@@ -7,18 +7,21 @@ module.exports = {
       {
         code: "M001",
         name: "Angga",
+        book: 0,
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
         code: "M002",
         name: "Ferry",
+        book: 0,
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
         code: "M003",
         name: "Putri",
+        book: 0,
         created_at: new Date(),
         updated_at: new Date(),
       },

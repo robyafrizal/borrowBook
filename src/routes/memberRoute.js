@@ -11,5 +11,6 @@ const memberHandler = new MemberHandler(memberService);
 const router = express.Router();
 
 router.get("/members", memberHandler.getMember);
+router.get("/members/:id", memberHandler.getMemberById);
 
 module.exports = router;

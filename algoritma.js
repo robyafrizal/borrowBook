@@ -1,4 +1,5 @@
 //1. Terdapat string "NEGIE1", silahkan reverse alphabet nya dengan angka tetap diakhir kata Hasil = "EIGEN1"
+console.log("---------Soal 1---------");
 
 let string = "NEGIE1";
 function reverseLetter(string) {
@@ -23,6 +24,7 @@ function reverseLetter(string) {
 console.log(reverseLetter(string));
 
 //2. Silahkan cari kata terpanjang dari kalimat tersebut, jika ada kata dengan panjang yang sama silahkan ambil salah satu
+console.log("---------Soal 2---------");
 
 const sentence = "Saya sangat senang mengerjakan soal algoritma";
 
@@ -42,13 +44,14 @@ console.log(longest(sentence));
 // mengerjakan: 11 character
 
 //3. Dua buah array yaitu array INPUT dan array QUERY, silahkan tentukan berapa kali kata dalam QUERY terdapat pada array INPUT
+console.log("---------Soal 3---------");
 
 function countQuery(INPUT, QUERY) {
   INPUT = ["xc", "dz", "bbb", "dz"];
   QUERY = ["bbb", "ac", "dz"];
   let OUTPUT = [];
-  let result = 0;
   for (let i = 0; i < QUERY.length; i++) {
+    let result = 0;
     for (let j = 0; j < INPUT.length; j++) {
       if (QUERY[i] === INPUT[j]) {
         result++;
@@ -62,6 +65,8 @@ countQuery();
 // OUTPUT = [1, 0, 2] //karena kata 'bbb' terdapat 1 pada INPUT, kata 'ac' tidak ada pada INPUT, dan kata 'dz' terdapat 2 pada INPUT
 
 //4. Hasil dari pengurangan dari jumlah diagonal sebuah matrik NxN
+console.log("---------Soal 4---------");
+
 function diagonalDifference(arr) {
   console.log("Matrix : ", arr);
 

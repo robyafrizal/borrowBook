@@ -3,6 +3,7 @@ class MemberHandler {
     this.MemberService = MemberService;
 
     this.getMember = this.getMember.bind(this);
+    this.getMemberById = this.getMemberById.bind(this);
   }
 
   async getMember(req, res) {
@@ -10,6 +11,15 @@ class MemberHandler {
     // console.log(serviceRes);
     res.status(serviceRes.statusCode).send({
       members: serviceRes.members,
+    });
+  }
+
+  async getMemberById(req, res) {
+    const id = req.params.id;
+    const serviceRes = await this.MemberService.getMemberById(id);
+    res.status(serviceRes.statusCode).send({
+      members: serviceRes.members,
+      message: serviceRes.message,
     });
   }
 }

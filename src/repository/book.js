@@ -8,6 +8,15 @@ class BookRepository {
 
     return BookList;
   }
+
+  async findBookById(id) {
+    const idBook = await Book.findOne({ where: { id } });
+    return idBook;
+  }
+
+  async save(book) {
+    return await book.save();
+  }
 }
 
 module.exports = BookRepository;
