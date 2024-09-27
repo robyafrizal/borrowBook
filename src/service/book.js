@@ -1,3 +1,4 @@
+const { addDays } = require("date-fns");
 class BookService {
   constructor(BookRepository, MemberRepository) {
     this.BookRepository = BookRepository;
@@ -74,6 +75,12 @@ class BookService {
         };
       }
 
+      const borrow_date = new Date();
+      const due_date = addDays(borrow_date, 7);
+
+      book.borrow_date = borrow_date;
+      book.due_date = due_date;
+      book.borrowed_by = memberId;
       book.stock--;
       member.book++;
       await this.BookRepository.save(book);
@@ -114,6 +121,17 @@ class BookService {
         };
       }
 
+      if (book.borrowed_by !== memberId) {
+        return {
+          books: null,
+          message: "You cannot return a book borrowed by another member",
+          statusCode: 400,
+        };
+      }
+
+      book.borrow_date = null;
+      book.due_date = null;
+      book.borrowed_by = null;
       book.stock++;
       member.book--;
       await this.BookRepository.save(book);

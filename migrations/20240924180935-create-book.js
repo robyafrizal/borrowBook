@@ -21,6 +21,18 @@ module.exports = {
       stock: {
         type: Sequelize.INTEGER,
       },
+      borrow_date: {
+        allowNull: true,
+        type: Sequelize.DATE,
+      },
+      due_date: {
+        allowNull: true,
+        type: Sequelize.DATE,
+      },
+      borrowed_by: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

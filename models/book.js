@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       author: DataTypes.STRING,
       stock: DataTypes.INTEGER,
+      borrow_date: DataTypes.DATE,
+      due_date: DataTypes.DATE,
+      borrowed_by: DataTypes.INTEGER,
     },
     {
       sequelize,
