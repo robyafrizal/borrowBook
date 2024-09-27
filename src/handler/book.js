@@ -35,8 +35,8 @@ class BookHandler {
   }
 
   async returnBook(req, res) {
-    const { bookId } = req.body;
-    const serviceRes = await this.BookService.returnBook(bookId);
+    const { memberId, bookId } = req.body;
+    const serviceRes = await this.BookService.returnBook(memberId, bookId);
     res.status(serviceRes.statusCode).send({
       books: serviceRes.books,
       message: serviceRes.message,

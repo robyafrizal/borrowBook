@@ -93,19 +93,20 @@ class BookService {
     }
   }
 
-  async returnBook(bookId) {
+  async returnBook(memberId, bookId) {
     try {
       const book = await this.BookRepository.findBookById(bookId);
+      const member = await this.MemberRepository.findMemberById(memberId);
 
-      if (!book) {
+      if (!book || !member) {
         return {
           books: null,
-          message: "Book not found",
+          message: "Book or Member not found",
           statusCode: 404,
         };
       }
 
-      if ((book.stock = 1)) {
+      if (member && book && book.stock == 1) {
         return {
           books: null,
           message: "Book is already returned",
@@ -113,9 +114,10 @@ class BookService {
         };
       }
 
-      // Business logic to mark the book as returned
       book.stock++;
+      member.book--;
       await this.BookRepository.save(book);
+      await this.MemberRepository.save(member);
 
       return {
         books: null,
