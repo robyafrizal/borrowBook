@@ -73,6 +73,88 @@
                     }
                 }
             }
+        },
+        "/api/book/borrow": {
+            "post": {
+                "summary": "Create a borrow book",
+                "operationId": "createBorrowBook",
+                "tags": [
+                    "Books"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewID"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Book borrowed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/book/return": {
+            "post": {
+                "summary": "Create a return book",
+                "operationId": "createReturnBook",
+                "tags": [
+                    "Books"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewID"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Book returned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -91,6 +173,10 @@
                     "name": {
                         "type": "string",
                         "example": "Angga"
+                    },
+                    "book": {
+                        "type": "integer",
+                        "example": "0"
                     },
                     "createdAt": {
                         "type": "string",
@@ -123,13 +209,23 @@
                         "type": "string",
                         "example": "J.K Rowling"
                     },
-                    "member_id": {
+                    "stock": {
                         "type": "integer",
                         "example": 1
                     },
-                    "stock": {
-                        "type": "",
-                        "example": 1
+                    "borrow_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": null
+                    },
+                    "due_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": null
+                    },
+                    "borrowed_by": {
+                        "type": "integer",
+                        "example": null
                     },
                     "createdAt": {
                         "type": "string",
@@ -142,6 +238,23 @@
                         "example": "2024-09-24T18:28:24.871Z"
                     }
                 }
+            },
+            "NewID": {
+                "type": "object",
+                "properties": {
+                    "memberId": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "bookId": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "required": [
+                    "memberId",
+                    "bookId"
+                ]
             },
             "Error": {
                 "type": "object",

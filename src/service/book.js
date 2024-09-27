@@ -87,9 +87,9 @@ class BookService {
       await this.MemberRepository.save(member);
 
       return {
-        books: null,
+        books: book,
         message: "Book borrowed successfully",
-        statusCode: 200,
+        statusCode: 201,
       };
     } catch (error) {
       return {
@@ -138,9 +138,9 @@ class BookService {
       await this.MemberRepository.save(member);
 
       return {
-        books: null,
+        books: book,
         message: "Book returned successfully",
-        statusCode: 200,
+        statusCode: 201,
       };
     } catch (error) {
       return {
